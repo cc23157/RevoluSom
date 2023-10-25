@@ -52,7 +52,7 @@
             </li>
             <div class="bottom">
                 <li>
-                    <a href="#">
+                    <a href="file:///D:/TI220%20-%20Pr%C3%A1ticas%20Profissionais%20II/PerfilUsuario/perfil.html">
                         <span class="icon">
                             <div class="imgBx">
                                 <img src="profilePic.png"> 
@@ -70,6 +70,24 @@
             </div>
         </ul>
     </div>
+
+    <aside>
+        <nav>
+            <div id="toggle">
+                <i class="indicator"></i>
+            </div>
+            <script>
+                const sidebar = document.querySelector('sidebar');
+                const body = document.querySelector('body');
+                const toggle = document.getElementById('toggle');
+                toggle.onclick = function() {
+                    toggle.classList.toggle('active')
+                    body.classList.toggle('active')
+                    sidebar.classList.toggle('active')
+                }
+            </script>
+        </nav>
+    </aside>
     <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
     <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
 </body>
