@@ -12,7 +12,7 @@
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700;800;900&display=swap" rel="stylesheet">
 </head>
 <body>
-    <div class="sidebar">
+    <div id="sidebar" class="sidebar">
         <ul>
             <li class="logo">
                 <a href="#">
@@ -21,13 +21,13 @@
                 </a>
             </li>
             <li>
-                <a href="#">
+                <a href="file:///D:/TI220%20-%20Pr%C3%A1ticas%20Profissionais%20II/MenuTelaInicial/menu.html">
                     <span class="icon"><ion-icon name="home-outline"></ion-icon></span>
                     <span class="text">Menu</span>
                 </a>
             </li>
             <li>
-                <a href="#">
+                <a href="https://www.youtube.com/">
                     <span class="icon"><ion-icon name="list-outline"></ion-icon></span>
                     <span class="text">Playlist</span>
                 </a>
@@ -50,12 +50,6 @@
                     <span class="text">Configurações</span>
                 </a>
             </li>
-            <li>
-                <a href="#">
-                    <span class="icon"><ion-icon name="construct-outline"></ion-icon></span>
-                    <span class="text">Editar Perfil</span>
-                </a>
-            </li>
             <div class="bottom">
                 <li>
                     <a href="#">
@@ -69,18 +63,41 @@
     <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
     <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
 
-    <div class="container">
+    <div id="container" class="container">
         <div class="profileBox">
             <img src="profilePic.png" class="profilePicture">
-            <img src="favorito.ico" class="favoritos" alt="Favoritos">
+            <a href="#">
+                <img src="favorito.ico" class="favoritos" alt="Favoritos">
+            </a>
             <h3>Fulano de Tal</h3>
-        </div>
         <button type="button">Editar perfil</button>
-        <div class="editarPerfil">
+        <div class="minhasPlaylists">
             <p>Minhas Playlists</p>
-            <img src="seta.png">
+            <img src="arrow.png">
+        </div>
         </div>
     </div>
+
+    <aside>
+        <nav>
+            <div id="toggle">
+                <i class="indicator"></i>
+            </div>
+            <script>
+                const sidebar = document.querySelector('sidebar');
+                const container = document.querySelector('container');
+                const body = document.querySelector('body');
+                const toggle = document.getElementById('toggle');
+                toggle.onclick = function() {
+                    toggle.classList.toggle('active')
+                    body.classList.toggle('active')
+                    sidebar.classList.toggle('active')
+                    container.classList.toggle('actice')
+                }
+            </script>
+        </nav>
+    </aside>
+
     
 </body>
 </html>
