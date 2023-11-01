@@ -1,0 +1,91 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlserver"
+  url      = env("DATABASE_URL")
+}
+
+model Artista {
+  idArtista Int @id @default(autoincrement())
+  preNome String @db.VarChar(40)
+  nome String? @db.VarChar(40)
+  email String @db.VarChar(50) @unique
+  senha String @db.VarChar(30)
+  musicas Musica[]
+  albuns Album[]
+  generos Genero[]
+  seguidores Usuario[]
+}
+
+model Usuario {
+  idUsuario String @id @db.VarChar(20)
+  preNome String @db.VarChar(40)
+	sobrenome String? @db.VarChar(40)
+	senha String @db.VarChar(30)
+  seguindo Artista[]
+  musicasCurtidas Musica[]
+  generos Genero[]
+  playlists Playlist[]
+}
+
+model Genero {
+  idGenero Int @id @default(autoincrement())
+  nome String @db.VarChar(40) @unique
+  artistas Artista[]
+  usuarios Usuario[]
+  musicas Musica[]
+  albuns Album[]
+}
+
+model ClassAlbum {
+  idClassificacao Int @id
+  nome String @db.VarChar(20) @unique
+
+  albuns Album[]
+}
+
+model Album {
+  idAlbum Int @id @default(autoincrement())
+  nome String @db.VarChar(40)
+  duracao Int 
+
+  artistaId Int 
+  escritor Artista @relation(fields: [artistaId], references: [idArtista])
+
+  classificacaoId Int
+  classificacao ClassAlbum @relation(fields: [classificacaoId], references: [idClassificacao])
+
+  generos Genero[]
+  musicas Musica[]
+}
+
+model Musica {
+  idMusica Int @id @default(autoincrement())
+  nome String @db.VarChar(40)
+  duracao Int
+  arquivoMusica String @db.VarChar(150)
+
+  albumId Int
+  album Album @relation(fields: [albumId], references: [idAlbum], onDelete: NoAction, onUpdate: NoAction)
+
+  artistaId Int
+  escritor Artista @relation(fields: [artistaId], references: [idArtista])
+
+  playlists Playlist[]
+  curtidas Usuario[]
+  generos Genero[]
+}
+
+model Playlist {
+  idPlaylist Int @id @default(autoincrement())
+  nome String @db.VarChar(40)
+	duracao Int
+	capa Bytes
+
+  usuarioId String @db.VarChar(20)
+  usuario Usuario @relation(fields: [usuarioId], references: [idUsuario])
+
+  musicas Musica[]
+}
