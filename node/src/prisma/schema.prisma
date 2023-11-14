@@ -8,84 +8,131 @@ datasource db {
 }
 
 model Artista {
-  idArtista Int @id @default(autoincrement())
-  preNome String @db.VarChar(40)
-  nome String? @db.VarChar(40)
-  email String @db.VarChar(50) @unique
-  senha String @db.VarChar(30)
-  musicas Musica[]
-  albuns Album[]
-  generos Genero[]
-  seguidores Usuario[]
+  idArtista      Int              @id(map: "PK__Artista__DC480292C6898D75") @default(autoincrement())
+  preNome        String           @db.VarChar(40)
+  sobrenome      String?          @db.VarChar(40)
+  email          String           @unique(map: "UQ__Artista__AB6E61643328C93A") @db.VarChar(50)
+  senha          String           @db.VarChar(30)
+  Album          Album[]
+  ArtistaGenero  ArtistaGenero[]
+  Musica         Musica[]
+  UsuarioArtista UsuarioArtista[]
 }
 
 model Usuario {
-  idUsuario String @id @db.VarChar(20)
-  preNome String @db.VarChar(40)
-	sobrenome String? @db.VarChar(40)
-	senha String @db.VarChar(30)
-  seguindo Artista[]
-  musicasCurtidas Musica[]
-  generos Genero[]
-  playlists Playlist[]
+  idUsuario      String           @id(map: "PK__Usuario__645723A609045635") @db.VarChar(20)
+  preNome        String           @db.VarChar(40)
+  sobrenome      String?          @db.VarChar(40)
+  senha          String           @db.VarChar(30)
+  Playlist       Playlist[]
+  UsuarioArtista UsuarioArtista[]
+  UsuarioGenero  UsuarioGenero[]
+  UsuarioMusica  UsuarioMusica[]
 }
 
 model Genero {
-  idGenero Int @id @default(autoincrement())
-  nome String @db.VarChar(40) @unique
-  artistas Artista[]
-  usuarios Usuario[]
-  musicas Musica[]
-  albuns Album[]
+  idGenero      Int             @id(map: "PK__Genero__85223DA3D6D56EDF") @default(autoincrement())
+  nome          String          @unique(map: "UQ__Genero__6F71C0DCB5816C31") @db.VarChar(40)
+  AlbumGenero   AlbumGenero[]
+  ArtistaGenero ArtistaGenero[]
+  MusicaGenero  MusicaGenero[]
+  UsuarioGenero UsuarioGenero[]
 }
 
 model ClassAlbum {
-  idClassificacao Int @id
-  nome String @db.VarChar(20) @unique
-
-  albuns Album[]
+  idClassificacao Int     @id(map: "PK__ClassAlb__9D91840649F4D5B5") @default(autoincrement())
+  nome            String  @unique(map: "UQ__ClassAlb__6F71C0DC2A782425") @db.VarChar(20)
+  Album           Album[]
 }
 
 model Album {
-  idAlbum Int @id @default(autoincrement())
-  nome String @db.VarChar(40)
-  duracao Int 
-
-  artistaId Int 
-  escritor Artista @relation(fields: [artistaId], references: [idArtista])
-
-  classificacaoId Int
-  classificacao ClassAlbum @relation(fields: [classificacaoId], references: [idClassificacao])
-
-  generos Genero[]
-  musicas Musica[]
+  idAlbum       Int           @id(map: "PK__Album__F01A074872EF5305") @default(autoincrement())
+  nome          String        @db.VarChar(40)
+  classificacao Int
+  idArtista     Int
+  duracao       DateTime      @db.Time
+  ClassAlbum    ClassAlbum    @relation(fields: [classificacao], references: [idClassificacao], onUpdate: NoAction, map: "FK__Album__classific__725BF7F6")
+  Artista       Artista       @relation(fields: [idArtista], references: [idArtista], onUpdate: NoAction, map: "FK__Album__idArtista__73501C2F")
+  AlbumGenero   AlbumGenero[]
+  Musica        Musica[]
 }
 
 model Musica {
-  idMusica Int @id @default(autoincrement())
-  nome String @db.VarChar(40)
-  duracao Int
-  arquivoMusica String @db.VarChar(150)
-
-  albumId Int
-  album Album @relation(fields: [albumId], references: [idAlbum], onDelete: NoAction, onUpdate: NoAction)
-
-  artistaId Int
-  escritor Artista @relation(fields: [artistaId], references: [idArtista])
-
-  playlists Playlist[]
-  curtidas Usuario[]
-  generos Genero[]
+  idMusica       Int              @id(map: "PK__Musica__41A84A85625D7C92") @default(autoincrement())
+  nome           String           @db.VarChar(40)
+  idAlbum        Int
+  arquivoMusica  String           @db.VarChar(150)
+  duracao        DateTime         @db.Time
+  idArtista      Int
+  Album          Album            @relation(fields: [idAlbum], references: [idAlbum], onUpdate: NoAction, map: "FK__Musica__idAlbum__762C88DA")
+  Artista        Artista          @relation(fields: [idArtista], references: [idArtista], onUpdate: NoAction, map: "FK__Musica__idArtist__10E07F16")
+  MusicaGenero   MusicaGenero[]
+  PlaylistMusica PlaylistMusica[]
+  UsuarioMusica  UsuarioMusica[]
 }
 
 model Playlist {
-  idPlaylist Int @id @default(autoincrement())
-  nome String @db.VarChar(40)
-	duracao Int
-	capa Bytes
+  idPlaylist     Int              @id(map: "PK__Playlist__63586A3C4BAE9F8A") @default(autoincrement())
+  nome           String           @db.VarChar(40)
+  duracao        DateTime         @db.Time
+  capa           Bytes?           @db.Image
+  idUsuario      String           @db.VarChar(20)
+  Usuario        Usuario          @relation(fields: [idUsuario], references: [idUsuario], onUpdate: NoAction, map: "FK__Playlist__idUsua__7908F585")
+  PlaylistMusica PlaylistMusica[]
+}
 
-  usuarioId String @db.VarChar(20)
-  usuario Usuario @relation(fields: [usuarioId], references: [idUsuario])
+model AlbumGenero {
+  idAlbumGenero Int    @id(map: "PK__AlbumGen__74637132DE9C2DC6") @default(autoincrement())
+  idAlbum       Int
+  idGenero      Int
+  Album         Album  @relation(fields: [idAlbum], references: [idAlbum], onUpdate: NoAction, map: "FK__AlbumGene__idAlb__075714DC")
+  Genero        Genero @relation(fields: [idGenero], references: [idGenero], onUpdate: NoAction, map: "FK__AlbumGene__idGen__084B3915")
+}
 
-  musicas Musica[]
+model ArtistaGenero {
+  idArtistaGenero Int     @id(map: "PK__ArtistaG__DD5A6DE24A1745C3") @default(autoincrement())
+  idArtista       Int
+  idGenero        Int
+  Artista         Artista @relation(fields: [idArtista], references: [idArtista], onUpdate: NoAction, map: "FK__ArtistaGe__idArt__7BE56230")
+  Genero          Genero  @relation(fields: [idGenero], references: [idGenero], onUpdate: NoAction, map: "FK__ArtistaGe__idGen__7CD98669")
+}
+
+model MusicaGenero {
+  idMusicaGenero Int    @id(map: "PK__MusicaGe__5F574A7FE116144A") @default(autoincrement())
+  idMusica       Int
+  idGenero       Int
+  Genero         Genero @relation(fields: [idGenero], references: [idGenero], onUpdate: NoAction, map: "FK__MusicaGen__idGen__0C1BC9F9")
+  Musica         Musica @relation(fields: [idMusica], references: [idMusica], onUpdate: NoAction, map: "FK__MusicaGen__idMus__0B27A5C0")
+}
+
+model PlaylistMusica {
+  idPlaylistMusica Int      @id(map: "PK__Playlist__F957113BE7D332EC") @default(autoincrement())
+  idPlaylist       Int
+  idMusica         Int
+  Musica           Musica   @relation(fields: [idMusica], references: [idMusica], onUpdate: NoAction, map: "FK__PlaylistM__idMus__2116E6DF")
+  Playlist         Playlist @relation(fields: [idPlaylist], references: [idPlaylist], onUpdate: NoAction, map: "FK__PlaylistM__idPla__2022C2A6")
+}
+
+model UsuarioArtista {
+  idUsuarioArtista Int     @id(map: "PK__UsuarioA__26950C9580D5A708") @default(autoincrement())
+  idUsuario        String  @db.VarChar(20)
+  idMusica         Int
+  Artista          Artista @relation(fields: [idMusica], references: [idArtista], onUpdate: NoAction, map: "FK__UsuarioAr__idMus__2C88998B")
+  Usuario          Usuario @relation(fields: [idUsuario], references: [idUsuario], onUpdate: NoAction, map: "FK__UsuarioAr__idUsu__2B947552")
+}
+
+model UsuarioGenero {
+  idUsuarioGenero Int     @id(map: "PK__UsuarioG__934996372E990E67") @default(autoincrement())
+  idUsuario       String  @db.VarChar(20)
+  idGenero        Int
+  Genero          Genero  @relation(fields: [idGenero], references: [idGenero], onUpdate: NoAction, map: "FK__UsuarioGe__idGen__0FEC5ADD")
+  Usuario         Usuario @relation(fields: [idUsuario], references: [idUsuario], onUpdate: NoAction, map: "FK__UsuarioGe__idUsu__0EF836A4")
+}
+
+model UsuarioMusica {
+  idUsuarioMusica Int     @id(map: "PK__UsuarioM__BF87DB4711CF3745") @default(autoincrement())
+  idUsuario       String  @db.VarChar(20)
+  idMusica        Int
+  Musica          Musica  @relation(fields: [idMusica], references: [idMusica], onUpdate: NoAction, map: "FK__UsuarioMu__idMus__24E777C3")
+  Usuario         Usuario @relation(fields: [idUsuario], references: [idUsuario], onUpdate: NoAction, map: "FK__UsuarioMu__idUsu__23F3538A")
 }

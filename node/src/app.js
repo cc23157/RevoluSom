@@ -9,8 +9,6 @@ app.use('/', route)
 
 app.use(express.urlencoded({extended:true}))
 app.use(express.json())
-app.use(express.static('../../../frontEnd'))
-
 
 // monitora requisições na porta 3000
 app.listen(3000, () => {
