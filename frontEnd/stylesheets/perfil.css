@@ -1,0 +1,296 @@
+*
+{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+
+body
+{
+    background: #fff6e7;
+    transition: 0.5s;
+}
+
+body.active
+{
+    background: #3b3d3d;
+}
+
+#sidebar.active 
+{
+    background: #636464;
+    color: #fff;
+}
+
+#container.active
+{
+    background: #1b1e1e;
+    color: #fff;
+}
+
+#toggle
+{
+    position: relative;
+    display: block;
+    width: 60px;
+    height: 30px;
+    border-radius: 80px;
+    background-color: #ffe9ca;
+    transition: 0.5s;
+    cursor: pointer;
+    box-shadow: inset 0 2px 60px rgba(0, 0, 0, 0.1),
+                inset 0 2px 8px rgba(0, 0, 0, 0.1),
+                inset 0 -4px 8px rgba(0, 0, 0, 0.1);
+}
+
+#toggle.active
+{
+    background: #1b1e1e;
+    box-shadow: inset 0 8px 60px rgba(0, 0, 0, 0.1), 
+                inset 0 8px 60px rgba(0, 0, 0, 0.1), 
+                inset 0 -4px 4px rgba(0, 0, 0, 0.05);
+}
+
+#toggle .indicator
+{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 30px;
+    height: 30px;
+    background: linear-gradient(to bottom, #ffdcab, #ffedd9);
+    border-radius: 50%;
+    transform: scale(0.9);
+    box-shadow: 0 2px 20px rgba(0, 0, 0, 0.1),
+                inset 0 2px 2px rgba(0, 0, 0, 0.1),
+                inset 0 -2px 2px rgba(0, 0, 0, 0.1);
+    transition: 0.5s;
+}
+
+#toggle.active .indicator
+{
+    left: 30px;
+    background: linear-gradient(to bottom, #383a3a, #1b1e1e);
+    box-shadow: 0 8px 40px rgba(0, 0, 0, 0.5),
+                inset 0 2px 2px rgba(255, 255, 255, 0.2),
+                inset 0 -2px 2px rgba(255, 255, 255, 0.2);
+}
+
+.container
+{
+    width: 100%;
+    height: 100vh;
+    background-size: cover;
+    background-position: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: 0.5s;
+}
+
+.container h3
+{
+    font-weight: 400;
+}
+
+.profileBox
+{
+    background: #ffdcab;
+    text-align: center;
+    padding: 40px 90px;
+    position: relative;
+    color: #1b1e1e;
+    border-radius: 20px;
+    transition: 0.5s;
+}
+
+.favoritos
+{
+    width: 100px;
+    height: 100px;
+    position: absolute;
+    right: 5px;
+    bottom: 40px;
+}
+
+.profilePicture
+{
+    width: 150px;
+    border-radius: 50%;
+    background: #9b1d20;
+    padding: 6px;
+    margin-top: 40px;
+}
+
+.minhasPlaylists
+{
+    background: #fff;
+    color: #1b1e1e;
+    padding: 60px 0;
+    margin-right: -90px;
+    margin-left: -90px;
+    margin-bottom: -40px;
+    border-radius: 20px;
+    margin-top: -10px;
+}
+
+.minhasPlaylists img 
+{
+    width: 15px;
+    margin-top: 15px;
+    cursor: pointer;
+
+}
+
+.profileBox button
+{
+    background: #fff;
+    color: #1b1e1e;
+    border: none;
+    outline: none;
+    box-shadow: 0 5px 10px #9b1d20; 
+    padding: 15px 60px;
+    cursor: pointer;
+    border-radius: 30px;
+    margin-bottom: -50px;
+    font-weight: 600;
+    font-size: 16px;
+}
+
+.profileBox h3
+{
+    font-size: 22px;
+    margin-top: 20px;
+    font-weight: 500;
+}
+
+.sidebar
+{
+    position: absolute;
+    width: 60px;
+    height: 100vh;
+    background: #ffe9ca;
+    overflow: hidden;
+    transition: 0.5s;
+}
+
+.sidebar:hover
+{
+    width: 300px;
+}
+
+.sidebar ul
+{
+    position: relative;
+    height: 100vh;
+}
+
+.sidebar ul li
+{
+    list-style: none;
+}
+
+.sidebar ul li:hover
+{
+    background: #9b1d1f52;
+    color: #000;
+    transition: 0.5s;
+    transition: 0.5s ease-out;
+}
+
+.sidebar ul li a
+{
+    position: relative;
+    display: flex;
+    white-space: nowrap;
+    text-decoration: none;
+}
+
+.sidebar ul li a .icon
+{
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-width: 70px;
+    height: 70px;
+    font-size: 1.5em;
+    color: #000;
+}
+
+.sidebar ul li a .text
+{
+    position: relative;
+    height: 70px;
+    display: flex;
+    align-items: center;
+    font-size: 1em;
+    color: #1b1e1e;
+    letter-spacing: 0.05em;
+}
+
+.sidebar ul li a .icon img
+{
+    min-width: 70px;
+    height: 70px;
+}
+
+
+.sidebar ul li.logo
+{
+    margin-bottom: 50px;
+
+}
+
+.sidebar ul li.logo:hover
+{
+    background: #ffe9ca;
+    
+}
+
+.sidebar ul li.logo .icon
+{
+    font-size: 2em;
+}
+
+.sidebar ul li.logo .text
+{
+    font-size: 1.2em;
+    font-weight: 500;
+    color: #1b1e1e;
+}
+
+.bottom
+{
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+}
+
+.bottom .imgBx
+{   
+    position: relative;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    overflow: hidden;
+}
+
+.bottom .imgBx img
+{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+} 
+
+
+nav 
+{
+    margin-top: -47%;
+    margin-right: 30px;
+    float: right;
+}

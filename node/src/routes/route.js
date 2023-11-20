@@ -5,8 +5,10 @@ const controller = require('../controllers/controller')
 
 
 router.get('/', controller.getRaiz)  
-router.get('/login', controller.getLogin)
+router.get('/revolusom', controller.getTelaInicial)
+
 router.post('/login/usuario', controller.postUsuario)
-router.get('/infousuario', controller.getInfoUsuario)
+router.get('/loginusuario', controller.getLoginUsuario)
+router.get('/playlistsusuario', controller.getPlaylistsUsuario)
 
 module.exports = router

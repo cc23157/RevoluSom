@@ -57,3 +57,20 @@ function temaRosa() {
     cor.style.color = "white"
 }
 
+async function getPlaylists() {
+    const urlParams = new URLSearchParams(window.location.search)
+    const id = urlParams.get('id');
+
+    const resposta = await fetch(`http://localhost:3000/playlistsusuario?id=${id}`, {
+        method: 'GET'
+    })        
+    const res = await resposta.json()
+    console.log(res)
+
+    for (playlist in res) {
+        console.log(playlist)
+        nome = res[playlist]['nome']
+        duracao = res[playlist]['duracao']
+        window.alert(nome + ' - ' + duracao)
+    }
+}

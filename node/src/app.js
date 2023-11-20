@@ -10,7 +10,9 @@ app.use('/', route)
 app.use(express.urlencoded({extended:true}))
 app.use(express.json())
 
-// monitora requisições na porta 3000
+app.use(express.static(__dirname + '\\..\\..\\frontEnd\\'))
+
 app.listen(3000, () => {
-    console.log('foi')
+    let data = new Date()
+    console.log("Sevidor Node iniciado em " + data + " na porta 3000")
 })

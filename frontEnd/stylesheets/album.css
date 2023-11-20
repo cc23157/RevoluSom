@@ -1,0 +1,44 @@
+body {
+    background-color: #fff6e7;
+    color:#1b1e1e;
+    text-align: center;
+}
+
+#alinhar {
+    margin-top:4%;
+    margin-left: 15%;
+}
+
+#container {
+    background-color: #ffedd9;
+    color:#1b1e1e;
+    width: 220px;
+    flex-wrap: wrap;
+    display: flex;
+    justify-content: center;
+    border-radius: 8px;
+}
+
+.capas {
+    height: 200px; 
+    width: 200px; 
+    border-radius: 8px;
+    margin-top: 10px;
+}
+
+.titulo {
+    text-align: left;
+}
+
+.music {
+    height: 50px; 
+    width: 50px; 
+    border-radius: 2px;
+    margin:10px;
+}
+
+.divMusic {
+    display: flex;
+    align-items: center;
+    font-size: 125%;
+}

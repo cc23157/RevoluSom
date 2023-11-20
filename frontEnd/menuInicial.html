@@ -5,77 +5,11 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>RevoluSom</title>
-    <link rel="stylesheet" href="estilo.css">
-    <script src="script.js"></script>
-    <link rel="icon" type="image/x-icon" href="logo.png">
-    <style>
-        body {
-    /* background-color: #f9b4ab;     rosinha  */
-    /* background-color: #c2c1ba25;   cinzinha */ 
-    /* background-color: #1b1e1e;      Tema
-    color: #fff6e7;                     Escuro   */
-
-    background-color: #fff6e7;
-    color:#1b1e1e;
-    text-align: center;
-}
-
-.container {
-    background-color: #ffedd9;
-    color:#1b1e1e;
-    width: 90%;
-    margin: auto;
-    flex-wrap: wrap;
-    display: flex;
-    justify-content: center;
-    border-radius: 8px;
-}
-
-/* #container {
-    background-color: #111313;
-    color:#fff6e7;
-
-} */
-
-#album1 {
-    margin: 25px;
-    margin-top: 20px;
-    margin-left: 0px;
-    border-radius: 10px;
-}
-
-.album {
-
-    margin: 25px;
-    margin-top: 20px;
-    border-radius: 10px;
-}
-
-.capas {
-    height: 120px; 
-    width: 120px; 
-    border-radius: 8px;
-}
-
-/* .album {
-    background-color: #1b1e1e;
-    color:#fff6e7;
-
-} */
-
-.espaco {
-    margin-left: 15px;
-}
-
-#infos {
-    text-align: left;
-}
-
-
-    </style>
-
+    <link rel="stylesheet" type="text/css" href="stylesheets/menuInicial.css">
+    <script src="scripts/menuInicial.js"></script>
+    <link rel="icon" type="image/x-icon" href="imagens/logo.png">
 </head>
-<body id="body">
+<body id="body" onload="getPlaylists()">
     <h1>RevoluSom na área galerinha</h1>
 
     <div id="cont1" class="container">
@@ -498,6 +432,5 @@
     <!-- <div class="botao">
         <input type="button" value="Tema Rosa" onclick="temaRosa()">
     </div> -->
-
 </body>
 </html>

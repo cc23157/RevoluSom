@@ -179,7 +179,7 @@ h2
     letter-spacing: 0.1em;
 }
 
-.formBx .form form input[type = "submit"]
+.formBx .form form input[type = "button"]
 {
     background: #9b1d20;
     border: none;
@@ -194,4 +194,20 @@ h2
     color: #1b1e1e;
     letter-spacing: 0.05em;
     font-size: 0.8em;
+}
+
+input[type="file"] {
+    display: none;
+}
+
+#foto {
+    width: 100%;
+    margin-bottom: 15px;
+    padding: 10px;
+    outline: none;
+    font-size: 0.8em;
+    border: 1px solid #1b1e1e;
+    letter-spacing: 0.1em;
+    background: #ffffff;
+    color: #1b1e1eac;
 }
