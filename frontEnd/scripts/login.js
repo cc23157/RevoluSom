@@ -10,16 +10,29 @@ async function postUsuario() {
     } else {
         image = window.document.getElementById('fotoPadrao')
     }
-    window.alert(image)
 
     try {
-        const resposta = await fetch(`http://localhost:3000/login/usuario?id=${id}&nome=${nome}&sobrenome=${sobrenome}&senha=${senha}&foto=${image}`, {
-            method: 'POST'
+        const formData = {
+            id: id,
+            nome: nome,
+            sobrenome: sobrenome,
+            senha: senha,
+        }
+
+        console.log(image)
+        window.alert(image)
+
+        const resposta = await fetch(`http://localhost:3000/login/usuario`, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(formData)
         })        
         const res = await resposta.json()
         if (res.erro == null || res.erro == undefined) {
             window.alert('Cadastrado!')
-            window.location.href = `http://localhost:3000?id=${id}`
+            window.location.href = `http://localhost:3000/revolusom?id=${id}`
         }
         else {
             window.alert(res.erro)
@@ -35,13 +48,15 @@ async function loginUsuario() {
         let id = window.document.getElementById('usuariologin').value
         let senha = window.document.getElementById('senhalogin').value
         
+
         const resposta = await fetch(`http://localhost:3000/loginusuario?id=${id}&senha=${senha}`, {
-            method: 'GET'
+            method: 'GET',
         })        
+        
         const res = await resposta.json()
         if (res == true) {
             window.alert('fez login')
-            window.location.href = `http://localhost:3000?id=${id}`
+            window.location.href = `http://localhost:3000/revolusom?id=${id}`
         }
         else {
             if (res.erro != null || res.erro != undefined) {

@@ -1,8 +1,6 @@
 const { PrismaClient } = require('@prisma/client'); 
-const { json } = require('express');
 const prisma = new PrismaClient()
 const path = require('path');
-const { isUndefined } = require('util');
 const filePath = path.join(__dirname, '../../../frontEnd/');
 
 
@@ -17,25 +15,27 @@ exports.getTelaInicial = ("/revolusom",(req, res) => {
 exports.postUsuario = ("/login/usuario", async(req, res) => {
 
     try {
-        let id = req.query.id
-        let nome = req.query.nome
-        let sobrenome = req.query.sobrenome
-        let senha = req.query.senha
-        let foto = req.query.foto
+        let id = req.body.id
+        let nome = req.body.nome
+        let sobrenome = req.body.sobrenome
+        let senha = req.body.senha
         let resultado 
-        let imagem
 
-        imagem = Buffer.from(foto, 'base64');
-
-        const post = await prisma.$queryRaw`exec revolusom.spCadastrarUsuario ${id}, ${nome}, ${sobrenome}, ${senha}, ${imagem}, ${resultado} output` 
+        const post = await prisma.$queryRaw`exec revolusom.spCadastrarUsuario ${id}, ${nome}, ${sobrenome}, ${senha}, ${resultado} output` 
         
         if (resultado != 0) {
             res.send({ message: 'Usuário cadastrado com sucesso!', resultado })
         }
     }
     catch (error) {
-        console.error(error['meta']['message']);
-        res.send({erro: error['meta']['message']})
+        try {
+            console.error(error['meta']['message']);
+            res.send({erro: error['meta']['message']})
+        }
+        catch(erro) {
+            console.log(error)
+            res.send(error)
+        }
     }
 })
 
@@ -62,7 +62,7 @@ exports.getLoginUsuario = ("/loginusuario", async(req, res) => {
     }
 })
 
-exports.getPlaylistsUsuario = ("playlistsusuario", async(req, res) => {
+exports.getPlaylistsUsuario = ("/playlistsusuario", async(req, res) => {
     try {
         let id = req.query.id
 
@@ -75,3 +75,15 @@ exports.getPlaylistsUsuario = ("playlistsusuario", async(req, res) => {
     }
 })
 
+exports.getFotoUsuario = ('/foto', async(req, res) => {
+    try {
+        let id = req.query.id
+
+        const get = await prisma.$queryRaw`SELECT foto FROM Revolusom.Usuario WHERE idUsuario = ${id}`
+        res.send(get)
+    }
+    catch (error) {
+        console.error(error);
+        res.send({erro: error})
+    }
+})

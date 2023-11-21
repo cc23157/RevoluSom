@@ -70,7 +70,26 @@ async function getPlaylists() {
     for (playlist in res) {
         console.log(playlist)
         nome = res[playlist]['nome']
-        duracao = res[playlist]['duracao']
-        window.alert(nome + ' - ' + duracao)
+        window.alert(nome)
     }
+
+    const response = await fetch(`http://localhost:3000/foto?id=${id}`, {
+        method: 'GET'
+    })        
+
+    const foto = await response.blob()
+    console.log(foto)
+    let reader = new FileReader();
+    string = reader.readAsDataURL(foto);
+    string = reader.result
+    console.log(string)
+    let base64String = reader.result.replace("data:", "").replace(/^.+,/, "");
+    imageBase64Stringsep = base64String;
+    console.log(base64String);
+
+
+    let image = document.createElement('img')
+    image.src = imageBase64Stringsep
+
+    document.body.appendChild(image)
 }
