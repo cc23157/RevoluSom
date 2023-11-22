@@ -11,4 +11,7 @@ router.post('/login/usuario', controller.postUsuario)
 router.get('/loginusuario', controller.getLoginUsuario)
 router.get('/playlistsusuario', controller.getPlaylistsUsuario)
 
+
+router.get('/foto', controller.getFotoUsuario)
+
 module.exports = router
