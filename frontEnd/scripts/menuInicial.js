@@ -27,35 +27,36 @@ function temaClaro() {
 }
 
 
-function temaEscuro() {
+// function temaEscuro() {
 
-    let cor = document.getElementById("body")
-    cor.style.backgroundColor = "#1b1e1e"
-    cor.style.color = "#fff6e7"
-
-
-    let cont1 = document.getElementById("cont1")
-    cont1.style.backgroundColor = "#111313"
-    cont1.style.color = "#fff6e7"
+//     let cor = document.getElementById("body")
+//     cor.style.backgroundColor = "#1b1e1e"
+//     cor.style.color = "#fff6e7"
 
 
-    let cont2 = document.getElementById("cont2")
-    cont2.style.backgroundColor = "#111313"
-    cont2.style.color = "#fff6e7"
+//     let cont1 = document.getElementById("cont1")
+//     cont1.style.backgroundColor = "#111313"
+//     cont1.style.color = "#fff6e7"
 
 
-    let cont3 = document.getElementById("cont3")
-    cont3.style.backgroundColor = "#111313"
-    cont3.style.color = "#fff6e7"
-
-}
+//     let cont2 = document.getElementById("cont2")
+//     cont2.style.backgroundColor = "#111313"
+//     cont2.style.color = "#fff6e7"
 
 
-function temaRosa() {
-    let cor = document.getElementById("body")
-    cor.style.backgroundColor = "#f9b4ab"
-    cor.style.color = "white"
-}
+//     let cont3 = document.getElementById("cont3")
+//     cont3.style.backgroundColor = "#111313"
+//     cont3.style.color = "#fff6e7"
+
+//     let menu = document.getElementById("sidebar")
+//     menu.style.background = "#111313"
+
+//     let escritoMenu = document.getElementsByTagName("span")
+//     escritoMenu.style.color = "#fff6e7"
+
+// }
+
+
 
 async function getPlaylists() {
     const urlParams = new URLSearchParams(window.location.search)

@@ -10,7 +10,101 @@
     <link rel="icon" type="image/x-icon" href="imagens/logo.png">
 </head>
 <body id="body" onload="getPlaylists()">
+    
+
+    <!-- Da Gabis -->
+
+    <div class="sidebar" id="sidebar">
+        <ul>
+            <li class="logo">
+                <a href="#">
+                    <span class="icon" ><img src="imagens/logo.png" alt="Icone"></span>
+                    <span class="text"></span>
+                </a>
+            </li>
+            <li>
+                <a href="#">
+                    <span class="icon"><ion-icon name="home-outline"></ion-icon></span>
+                    <span class="text">Menu</span>
+                </a>
+            </li>
+            <li>
+                <a href="#">
+                    <span class="icon"><ion-icon name="list-outline"></ion-icon></span>
+                    <span class="text">Playlist</span>
+                </a>
+            </li>
+            <li>
+                <a href="#">
+                    <span class="icon"><ion-icon name="musical-notes-outline"></ion-icon></span>
+                    <span class="text">Gêneros</span>
+                </a>
+            </li>
+            <li>
+                <a href="#">
+                    <span class="icon"><ion-icon name="people-outline"></ion-icon></span>
+                    <span class="text">Artistas</span>
+                </a>
+            </li>
+            <li>
+                <a href="#">
+                    <span class="icon"><ion-icon name="settings-outline"></ion-icon></span>
+                    <span class="text">Configurações</span>
+                </a>
+            </li>
+            <div class="bottom">
+                <li>
+                    <a href="perfil.html">
+                        <span class="icon">
+                            <div class="imgBx">
+                                <img src="profilePic.png"> 
+                            </div>
+                        </span>
+                        <span class="text">Perfil</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="#">
+                        <span class="icon"><ion-icon name="log-out-outline"></ion-icon></span>
+                        <span class="text">Sair</span>
+                    </a>
+                </li>
+            </div>
+        </ul>
+    </div>
+
+    <!-- <aside>
+        <nav>
+            <div id="toggle">
+                <i class="indicator"></i>
+            </div>
+            <script>
+                const sidebar = document.querySelector('sidebar');
+                const body = document.querySelector('body');
+                const toggle = document.getElementById('toggle');
+                toggle.onclick = function() {
+                    toggle.classList.toggle('active')
+                    body.classList.toggle('active')
+                    sidebar.classList.toggle('active')
+                }
+            </script>
+        </nav>
+    </aside> -->
+
+    <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+
+
+
+    <!-- Da Manu -->
+
+    <br>
+    <br>
+    
     <h1>RevoluSom na área galerinha</h1>
+
+    <br>
+    <br>
 
     <div id="cont1" class="container">
         
@@ -251,32 +345,6 @@
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 <!-- 
     <div id="container" id="cont2">
 
@@ -417,7 +485,7 @@
 
 
 
-    <p>Deseja trocar o tema?</p>
+    <!-- <p>Deseja trocar o tema?</p>
 
     <div class="botao"> 
         <input type="button" value="Tema Escuro" onclick="temaEscuro()">
@@ -427,10 +495,7 @@
 
     <div class="botao">    
         <input type="button" value="Tema Claro" onclick="temaClaro()">
-    </div>
-
-    <!-- <div class="botao">
-        <input type="button" value="Tema Rosa" onclick="temaRosa()">
     </div> -->
+
 </body>
 </html>
