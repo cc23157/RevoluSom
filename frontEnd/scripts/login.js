@@ -3,33 +3,37 @@ async function postUsuario() {
     let nome = window.document.getElementById('nome').value 
     let sobrenome = window.document.getElementById('sobrenome').value 
     let senha = window.document.getElementById('senha').value 
-    let image = window.document.getElementById('arquivo').files
-
-    if (image.length != 0) {
-        image = image[0]
-    } else {
-        image = window.document.getElementById('fotoPadrao')
-    }
+    let image = window.document.getElementById('arquivo').files[0]
 
     try {
-        const formData = {
+        const formData = new FormData();
+        formData.append('file', image);
+        
+
+        const foto = await fetch(`http://localhost:3000/postfile?id=${id}&type=${image.type}&parent=1`, {
+            method: 'POST',
+            body: formData
+        })
+        const fotores = await foto.json()
+
+
+        const data = {
             id: id,
             nome: nome,
             sobrenome: sobrenome,
             senha: senha,
+            foto: fotores.id
         }
-
-        console.log(image)
-        window.alert(image)
 
         const resposta = await fetch(`http://localhost:3000/login/usuario`, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
             },
-            body: JSON.stringify(formData)
+            body: JSON.stringify(data)
         })        
         const res = await resposta.json()
+        
         if (res.erro == null || res.erro == undefined) {
             window.alert('Cadastrado!')
             window.location.href = `http://localhost:3000/revolusom?id=${id}`

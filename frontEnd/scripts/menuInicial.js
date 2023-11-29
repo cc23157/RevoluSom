@@ -62,35 +62,24 @@ async function getPlaylists() {
     const urlParams = new URLSearchParams(window.location.search)
     const id = urlParams.get('id');
 
-    const resposta = await fetch(`http://localhost:3000/playlistsusuario?id=${id}`, {
+    const foto = await fetch(`http://localhost:3000/getfile?id=${id}`, {
         method: 'GET'
-    })        
-    const res = await resposta.json()
-    console.log(res)
+    })
+    const f = await foto.json()
+    
+    let element = window.document.createElement('img')
+    element.src = f.url
+    document.body.append(element)
 
-    for (playlist in res) {
-        console.log(playlist)
-        nome = res[playlist]['nome']
-        window.alert(nome)
-    }
+    // const resposta = await fetch(`http://localhost:3000/playlistsusuario?id=${id}`, {
+    //     method: 'GET'
+    // })        
+    // const res = await resposta.json()
+    // console.log(res)
 
-    const response = await fetch(`http://localhost:3000/foto?id=${id}`, {
-        method: 'GET'
-    })        
-
-    const foto = await response.blob()
-    console.log(foto)
-    let reader = new FileReader();
-    string = reader.readAsDataURL(foto);
-    string = reader.result
-    console.log(string)
-    let base64String = reader.result.replace("data:", "").replace(/^.+,/, "");
-    imageBase64Stringsep = base64String;
-    console.log(base64String);
-
-
-    let image = document.createElement('img')
-    image.src = imageBase64Stringsep
-
-    document.body.appendChild(image)
+    // for (playlist in res) {
+    //     console.log(playlist)
+    //     nome = res[playlist]['nome']
+    //     window.alert(nome)
+    // }
 }

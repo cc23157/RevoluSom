@@ -13,7 +13,7 @@ app.use(bodyParser.urlencoded({extended: true,}),);
 const route = require('./routes/route')
 app.use('/', route) 
 
-app.use(express.static(__dirname + '\\..\\..\\frontEnd\\'))
+app.use(express.static(__dirname + '\\..\\..\\frontEnd\\'))/
 
 app.listen(3000, () => {
     let data = new Date()
