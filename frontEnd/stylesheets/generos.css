@@ -6,7 +6,7 @@ body {
 
 .generos {
     display: flex;
-     justify-content: center; 
+    justify-content: center; 
 }
 
 .cards {
@@ -27,8 +27,8 @@ body {
     padding: 30px 60px;
     background: #9b1d20;
     color: #fff;
-    font-size: 16px;
-    font-weight: 500;
+    font-size: 25px;
+    border-radius: 5px;
     border: none;
     outline: none;
 }
