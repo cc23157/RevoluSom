@@ -26,71 +26,10 @@ function temaClaro() {
 
 }
 
-
-// function temaEscuro() {
-
-//     let cor = document.getElementById("body")
-//     cor.style.backgroundColor = "#1b1e1e"
-//     cor.style.color = "#fff6e7"
-
-
-//     let cont1 = document.getElementById("cont1")
-//     cont1.style.backgroundColor = "#111313"
-//     cont1.style.color = "#fff6e7"
-
-
-//     let cont2 = document.getElementById("cont2")
-//     cont2.style.backgroundColor = "#111313"
-//     cont2.style.color = "#fff6e7"
-
-
-//     let cont3 = document.getElementById("cont3")
-//     cont3.style.backgroundColor = "#111313"
-//     cont3.style.color = "#fff6e7"
-
-//     let menu = document.getElementById("sidebar")
-//     menu.style.background = "#111313"
-
-//     let escritoMenu = document.getElementsByTagName("span")
-//     escritoMenu.style.color = "#fff6e7"
-
-// }
-
-
-
-async function getPlaylists() {
-    const urlParams = new URLSearchParams(window.location.search)
-    const id = urlParams.get('id');
-
-    const foto = await fetch(`http://localhost:3000/getfile?id=${id}`, {
-        method: 'GET'
-    })
-    const f = await foto.json()
-    
-    let element = window.document.createElement('img')
-    element.src = f.url
-    document.body.append(element)
-
-
-
-    const resposta = await fetch(`http://localhost:3000/playlistsusuario?id=${id}`, {
-        method: 'GET'
-    })        
-    const res = await resposta.json()
-    console.log(res)
-
-    for (playlist in res) {
-        console.log(playlist)
-        nome = res[playlist]['nome']
-        idCapa = res[playlist]['idCapa']
-        url = `https://drive.google.com/uc?export=view&id=${idCapa}`
-        window.alert(nome)
-    }
-}
+const urlParams = new URLSearchParams(window.location.search)
+const id = urlParams.get('id');
 
 async function getTela() {
-    const urlParams = new URLSearchParams(window.location.search)
-    const id = urlParams.get('id');
 
     const resposta = await fetch(`http://localhost:3000/telausuario?id=${id}`, {
         method: 'GET'
@@ -116,7 +55,6 @@ async function getTela() {
         criarPlay(nomePlay, idCapa)
     }
     
-    window.alert('esperando')
 }
 
 function criarPlay(nome, capa) {
@@ -125,4 +63,12 @@ function criarPlay(nome, capa) {
     let url = `https://drive.google.com/uc?export=view&id=${capa}`
     elemento.innerHTML = `<h1>${nome}<h1><br><img src=${url}>`
     container.appendChild(elemento)
+}
+
+function Perfil() {
+    window.location.href = `http://localhost:3000/perfil?id=${id}`
+}
+
+function Sair() {
+    window.location.href = 'http://localhost:3000'
 }

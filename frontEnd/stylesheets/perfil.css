@@ -103,6 +103,7 @@ body.active
     color: #1b1e1e;
     border-radius: 20px;
     transition: 0.5s;
+    object-fit: cover;
 }
 
 .favoritos
@@ -116,11 +117,13 @@ body.active
 
 .profilePicture
 {
+    height: 150px;
     width: 150px;
     border-radius: 50%;
     background: #9b1d20;
     padding: 6px;
     margin-top: 40px;
+    object-fit: cover;
 }
 
 .minhasPlaylists
@@ -168,7 +171,7 @@ body.active
 .sidebar
 {
     position: absolute;
-    width: 60px;
+    width: 69px;
     height: 100vh;
     background: #ffe9ca;
     overflow: hidden;

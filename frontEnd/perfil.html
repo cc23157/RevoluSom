@@ -9,10 +9,11 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="sortcut icon" href="imagens/logo.png" type="image/x-icon">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <script src="scripts/perfil.js"></script>
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700;800;900&display=swap" rel="stylesheet">
 </head>
 
-<body>
+<body onload="getPerfil()">
 
     <div id="sidebar" class="sidebar">
         <ul>
@@ -23,7 +24,7 @@
                 </a>
             </li>
             <li>
-                <a href="menuInicial.html">
+                <a onclick="telainicial()">
                     <span class="icon"><ion-icon name="home-outline"></ion-icon></span>
                     <span class="text">Menu</span>
                 </a>
@@ -67,20 +68,13 @@
 
     <div id="container" class="container">
         <div class="profileBox">
-            <img src="imagens\fotoPerfilPadrao.jpg" class="profilePicture">
-            
-            <a href="#">
-                <img src="imagens\favorito.png" class="favoritos" alt="Favoritos">
-            </a>
+            <img id="foto" class="profilePicture">
 
-            <h3>Fulano de Tal</h3>
+            <h3 id="nome"></h3>
+
+            <br><br>
 
             <button type="button">Editar perfil</button>
-
-            <div class="minhasPlaylists">
-                <p>Minhas Playlists</p>
-                <img src="imagens\seta.png">
-            </div>
         </div>
     </div>
 

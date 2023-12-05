@@ -118,6 +118,9 @@ exports.getTelaInicial = ("/revolusom",(req, res) => {
     res.sendFile(filePath + '/menuInicial.html')
 })
 
+exports.getTelaPerfil = ("/perfil", (req,res) => {
+    res.sendFile(filePath + '/perfil.html')
+})
 
 // usuario
 
