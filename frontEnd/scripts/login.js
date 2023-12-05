@@ -5,45 +5,61 @@ async function postUsuario() {
     let senha = window.document.getElementById('senha').value 
     let image = window.document.getElementById('arquivo').files[0]
 
-    try {
-        const formData = new FormData();
-        formData.append('file', image);
-        
-
-        const foto = await fetch(`http://localhost:3000/postfile?id=${id}&type=${image.type}&parent=1`, {
-            method: 'POST',
-            body: formData
-        })
-        const fotores = await foto.json()
-
-
-        const data = {
-            id: id,
-            nome: nome,
-            sobrenome: sobrenome,
-            senha: senha,
-            foto: fotores.id
-        }
-
-        const resposta = await fetch(`http://localhost:3000/login/usuario`, {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json'
-            },
-            body: JSON.stringify(data)
-        })        
-        const res = await resposta.json()
-        
-        if (res.erro == null || res.erro == undefined) {
-            window.alert('Cadastrado!')
-            window.location.href = `http://localhost:3000/revolusom?id=${id}`
-        }
-        else {
-            window.alert(res.erro)
-        }
+    if (image == undefined || image == null) {
+        window.alert('Escolha uma foto de perfil.')
     }
-    catch (error) {
-        window.alert('Erro ao cadastrar: ' + error)
+    else {
+        try {
+            const formData = new FormData();
+            formData.append('file', image);
+            
+    
+            const foto = await fetch(`http://localhost:3000/postfile?id=${id}&type=${image.type}&parent=1`, {
+                method: 'POST',
+                body: formData
+            })
+            const fotores = await foto.json()
+            let idFoto = fotores.id
+    
+            const data = {
+                id: id,
+                nome: nome,
+                sobrenome: sobrenome,
+                senha: senha,
+                foto: idFoto
+            }
+    
+            const resposta = await fetch(`http://localhost:3000/postusuario`, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(data)
+            })        
+            const res = await resposta.json()
+            
+            if (res.erro == null || res.erro == undefined) {
+                window.alert(res.message)
+                window.location.href = `http://localhost:3000/revolusom?id=${id}`
+            }
+            else {
+                console.log('erro recebido: ' + res.erro)
+                window.alert(res.erro)
+                window.alert('apagando foto')
+                try {
+                    let fotoAPagada = await fetch(`http://localhost:3000/deletefile?id=${idFoto}`, {
+                        method: 'DELETE'
+                    })
+                }
+                catch (error) {
+                    console.log(error)
+                }
+            }
+        }
+        catch (error) {
+            console.log(error)
+            window.alert('Erro ao cadastrar: ' + error)
+        }
     }
 }
 
@@ -56,7 +72,7 @@ async function loginUsuario() {
         const resposta = await fetch(`http://localhost:3000/loginusuario?id=${id}&senha=${senha}`, {
             method: 'GET',
         })        
-        
+        console.log(resposta)
         const res = await resposta.json()
         if (res == true) {
             window.alert('fez login')

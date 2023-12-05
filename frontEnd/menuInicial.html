@@ -9,7 +9,7 @@
     <script src="scripts/menuInicial.js"></script>
     <link rel="icon" type="image/x-icon" href="imagens/logo.png">
 </head>
-<body id="body" onload="getPlaylists()">
+<body id="body" onload="getTela()">
     
 
     <!-- Da Gabis -->
@@ -57,7 +57,7 @@
                     <a href="perfil.html">
                         <span class="icon">
                             <div class="imgBx">
-                                <img src="profilePic.png"> 
+                                <img id="pfp" style="object-fit: cover; object-position:center"> 
                             </div>
                         </span>
                         <span class="text">Perfil</span>
@@ -101,12 +101,16 @@
     <br>
     <br>
     
-    <h1>RevoluSom na área galerinha</h1>
+    <h1 id="nomeUsuario"></h1>
 
     <br>
     <br>
 
     <div id="cont1" class="container">
+
+    </div>
+
+    <!-- <div id="cont1" class="container">
         
         <div id="album1">
             <img class="capas">
@@ -334,7 +338,7 @@
 
         <br>
 
-    </div>
+    </div> -->
 
 
 
