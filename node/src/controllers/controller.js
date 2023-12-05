@@ -617,7 +617,7 @@ exports.descurtirArtista = ("/descurtirartista", async(req,res) => {
 exports.curtirGenero = ("/curtirgenero", async(req,res) => {
     try {
         let idUsuario = req.body.idusuario
-        let idGenero = req.body.idGenero
+        let idGenero = req.body.idgenero
         let resultado 
 
 
