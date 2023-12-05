@@ -28,6 +28,7 @@ router.delete('/deletefile', controller.deleteFile)
 router.get('/', controller.getRaiz)  
 router.get('/revolusom', controller.getTelaInicial)
 router.get('/perfil', controller.getTelaPerfil)
+router.get('/escolher', controller.getTelaEscolherGeneros)
 
 
 // usuario

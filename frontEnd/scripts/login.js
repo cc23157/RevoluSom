@@ -90,7 +90,7 @@ async function postUsuario() {
                 
                 if (res.erro == null || res.erro == undefined) {
                     window.alert(res.message)
-                    window.location.href = `http://localhost:3000/revolusom?id=${id}`
+                    window.location.href = `http://localhost:3000/escolher?id=${id}`
                 }
                 else {
                     window.alert(res.erro)

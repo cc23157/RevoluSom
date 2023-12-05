@@ -27,5 +27,7 @@ async function associar() {
         }
     }
 
-    console.log("Gêneros adicionados")
+    window.alert("Gêneros adicionados")
+    window.location.href = `http://localhost:3000/revolusom?id=${id}`
+
 }

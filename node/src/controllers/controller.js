@@ -122,6 +122,11 @@ exports.getTelaPerfil = ("/perfil", (req,res) => {
     res.sendFile(filePath + '/perfil.html')
 })
 
+exports.getTelaEscolherGeneros = ('/escolher', (req,res) => {
+    res.sendFile(filePath + '/escolherGeneros.html')
+})
+
+
 // usuario
 
 exports.postUsuario = ("/postusuario", async(req, res) => {
@@ -455,6 +460,16 @@ exports.deleteMusica = ("/deletemusica", async(req, res) => {
             res.send(error)
         }
     }
+})
+
+
+// genero
+
+exports.getAlbunsGenero = ('/musicasgenero', async(req,res) => {
+    let idGenero = req.query.idgenero
+    const post = await prisma.$queryRaw`SELECT nome, idCapa FROM revolusom.Album WHERE idAlbum IN (SELECT idAlbum FROM revolusom.AlbumGenero WHERE idGenero = ${idGenero})`
+    
+    
 })
 
 
