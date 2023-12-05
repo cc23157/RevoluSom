@@ -5,6 +5,7 @@ async function getPerfil() {
 
     let eFoto = window.document.getElementById('foto')
     let eNome = window.document.getElementById('nome')
+    let eId = window.document.getElementById('usuario')
 
 
     const resposta = await fetch(`http://localhost:3000/telausuario?id=${id}`, {
@@ -18,6 +19,8 @@ async function getPerfil() {
     
     eFoto.src = `https://drive.google.com/uc?export=view&id=${idPfp}`
     eNome.innerHTML = nome
+
+    eId.innerHTML = '@' + id
 }
 
 function telainicial() {
