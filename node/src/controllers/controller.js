@@ -138,8 +138,8 @@ exports.getTelaAlbum = ('/album', (req,res) => {
     res.sendFile(filePath + '/album.html')
 })
 
-exports.getTelaEditarUsuario = ('/editarusuario', (req,res) => {
-    res.sendFile(filePath + '/')
+exports.getTelaEditarUsuario = ('/editarperfil', (req,res) => {
+    res.sendFile(filePath + '/editarPerfil.html')
 })
 
 

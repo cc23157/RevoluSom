@@ -56,7 +56,7 @@ async function editar() {
             foto: idFoto
         }
     
-        const resposta = await fetch(`http://localhost:3000/puUsuario`, {
+        const resposta = await fetch(`http://localhost:3000/putusuario`, {
             method: 'PUT',
             headers: {
                 'Content-Type': 'application/json'
@@ -67,6 +67,7 @@ async function editar() {
         
         if (res.erro == null || res.erro == undefined) {
             window.alert(res.message)
+            window.location.href = `http://localhost:3000/revolusom?id=${id}`
         }
         else {
             window.alert(res.erro)

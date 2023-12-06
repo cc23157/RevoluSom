@@ -32,6 +32,7 @@ router.get('/escolher', controller.getTelaEscolherGeneros)
 router.get('/generos', controller.getTelaGeneros)
 router.get('/genero', controller.getTelaGenero)
 router.get('/album', controller.getTelaAlbum)
+router.get('/editarperfil', controller.getTelaEditarUsuario)
 
 
 // usuario
