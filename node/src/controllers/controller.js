@@ -126,6 +126,18 @@ exports.getTelaEscolherGeneros = ('/escolher', (req,res) => {
     res.sendFile(filePath + '/escolherGeneros.html')
 })
 
+exports.getTelaGeneros = ('/generos', (req,res) => {
+    res.sendFile(filePath + '/generos.html')
+})
+
+exports.getTelaGenero = ('/genero', (req,res) => {
+    res.sendFile(filePath + '/genero.html')
+})
+
+exports.getTelaAlbum = ('/album', (req,res) => {
+    res.sendFile(filePath + '/album.html')
+})
+
 
 // usuario
 
@@ -234,7 +246,7 @@ exports.getTelaUsuario = ("/telausuario", async(req, res) => {
         const get1 = await prisma.$queryRaw`SELECT nome, idCapa FROM Revolusom.Playlist WHERE idUsuario = ${id}`
         let playlists = await get1
 
-        const get2 = await prisma.$queryRaw`SELECT TOP 1 preNome, sobrenome, idPfp, senha, FROM Revolusom.Usuario WHERE idUsuario = ${id}`
+        const get2 = await prisma.$queryRaw`SELECT TOP 1 preNome, sobrenome, idPfp, senha FROM Revolusom.Usuario WHERE idUsuario = ${id}`
         let data = await get2[0]
         let nome = data.preNome
         let sobrenome = data.sobrenome
@@ -413,6 +425,26 @@ exports.deleteAlbum = ("/deletealbum", async(req, res) => {
     }
 })
 
+exports.getMusicasAlbum = ('/musicasalbum', async(req,res) => {
+    let idAlbum = req.query.idalbum
+
+    const get1 = await prisma.$queryRaw`SELECT A.nome, A.idCapa, Ar.preNome, Ar.sobrenome FROM revolusom.Album A JOIN revolusom.Artista Ar ON A.idArtista = Ar.idArtista WHERE idAlbum = ${idAlbum}`
+    let dados = await get1[0]
+    let nome = dados.nome
+    let idCapa = dados.idCapa
+    let artista = dados.preNome + ' ' + dados.sobrenome
+
+    const get2 = await prisma.$queryRaw`SELECT nome, idArquivo FROM Revolusom.Musica WHERE idAlbum = ${idAlbum}`
+    let musicas = await get2
+
+    res.send({
+        musicas: musicas,
+        nome: nome,
+        idCapa: idCapa,
+        artista: artista
+    })
+})
+
 
 // musica
 
@@ -469,11 +501,10 @@ exports.deleteMusica = ("/deletemusica", async(req, res) => {
 
 // genero
 
-exports.getAlbunsGenero = ('/musicasgenero', async(req,res) => {
+exports.getAlbunsGenero = ('/albunsgenero', async(req,res) => {
     let idGenero = req.query.idgenero
-    const post = await prisma.$queryRaw`SELECT nome, idCapa FROM revolusom.Album WHERE idAlbum IN (SELECT idAlbum FROM revolusom.AlbumGenero WHERE idGenero = ${idGenero})`
-    
-    
+    const get = await prisma.$queryRaw`SELECT idAlbum, nome, idCapa FROM revolusom.Album WHERE idAlbum IN (SELECT idAlbum FROM revolusom.AlbumGenero WHERE idGenero = ${idGenero})`;
+    res.json(get)
 })
 
 

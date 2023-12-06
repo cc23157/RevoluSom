@@ -86,8 +86,3 @@ async function editar() {
         window.alert('Erro ao editar: ' + error)
     }
 }
-
-
-async function deletar() {
-    
-}
