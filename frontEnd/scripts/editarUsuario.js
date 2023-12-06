@@ -91,3 +91,29 @@ async function editar() {
         window.alert('Erro ao editar: ' + error)
     }
 }
+
+async function deletar() {
+    let apagado = await fetch(`http://localhost:3000/deleteusuario?id=${id}`, {
+        method: 'DELETE'
+    })
+    const res = await apagado.json()
+    window.alert(res.message)
+    window.location.href = 'http://localhost:3000'
+}
+
+
+function telainicial() {
+    window.location.href = `http://localhost:3000/revolusom?id=${id}`
+}
+
+function Sair() {
+    window.location.href = 'http://localhost:3000'
+}
+
+function Generos() {
+    window.location.href = `http://localhost:3000/generos?id=${id}`
+}
+
+function editar() {
+    window.location.href = `http://localhost:3000/editarperfil?id=${id}`
+}

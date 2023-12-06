@@ -199,7 +199,7 @@ exports.putUsuario = ("/putusuario", async(req, res) => {
 
 exports.deleteUsuario = ("/deleteusuario", async(req, res) => {
     try {
-        let id = req.body.id
+        let id = req.query.id
         let resultado
 
         const post = await prisma.$queryRaw`exec revolusom.spDeletarUsuario ${id}, ${resultado} output` 
