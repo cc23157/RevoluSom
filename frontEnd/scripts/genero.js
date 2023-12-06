@@ -46,3 +46,20 @@ async function getFoto() {
 function album(idAlbum) {
     window.location.href = `http://localhost:3000/album?id=${id}&album=${idAlbum}`
 }
+
+function telaInicial() {
+    window.location.href = `http://localhost:3000/revolusom?id=${id}`
+}
+
+
+function Perfil() {
+    window.location.href = `http://localhost:3000/perfil?id=${id}`
+}
+
+function Sair() {
+    window.location.href = 'http://localhost:3000'
+}
+
+function Generos() {
+    window.location.href = `http://localhost:3000/generos?id=${id}`
+}

@@ -3,6 +3,7 @@ const id = urlParams.get('id');
 const idAlbum = urlParams.get('album')
 
 async function album() {
+    getFoto()
 
     const resposta = await fetch(`http://localhost:3000/musicasalbum?idalbum=${idAlbum}`, {
         method: 'GET'
@@ -39,4 +40,35 @@ async function album() {
         
         elemento.appendChild(audio)
     }
+}
+
+
+async function getFoto() {
+
+    const resposta = await fetch(`http://localhost:3000/telausuario?id=${id}`, {
+        method: 'GET'
+    })   
+    const res = await resposta.json()
+    console.log(res)
+
+    let idPfp = res.idPfp
+    
+    let pfp = window.document.getElementById('pfp')
+    pfp.src = `https://drive.google.com/uc?export=view&id=${idPfp}`
+}
+
+function telaInicial() {
+    window.location.href = `http://localhost:3000/revolusom?id=${id}`
+}
+
+function Perfil() {
+    window.location.href = `http://localhost:3000/perfil?id=${id}`
+}
+
+function Sair() {
+    window.location.href = 'http://localhost:3000'
+}
+
+function Generos() {
+    window.location.href = `http://localhost:3000/generos?id=${id}`
 }

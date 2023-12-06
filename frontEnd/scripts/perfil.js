@@ -34,3 +34,7 @@ function Sair() {
 function Generos() {
     window.location.href = `http://localhost:3000/generos?id=${id}`
 }
+
+function editar() {
+    window.location.href = `http://localhost:3000/editarperfil?id=${id}`
+}
