@@ -432,7 +432,7 @@ exports.deleteAlbum = ("/deletealbum", async(req, res) => {
 exports.getMusicasAlbum = ('/musicasalbum', async(req,res) => {
     let idAlbum = req.query.idalbum
 
-    const get1 = await prisma.$queryRaw`SELECT A.nome, A.idCapa, Ar.preNome, Ar.sobrenome FROM revolusom.Album A JOIN revolusom.Artista Ar ON A.idArtista = Ar.idArtista WHERE idAlbum = ${idAlbum}`
+    const get1 = await prisma.$queryRaw`SELECT * FROM revolusom.V_musicas_artista WHERE idAlbum = ${idAlbum}`
     let dados = await get1[0]
     let nome = dados.nome
     let idCapa = dados.idCapa

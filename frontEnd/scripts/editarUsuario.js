@@ -9,7 +9,11 @@ async function iniciar() {
     let senha = window.document.getElementById('senha')
     let image = window.document.getElementById('arquivo')
 
-    let data = await fetch(`http://localhost:3000/telausuario?id=${id}`)
+    const resposta = await fetch(`http://localhost:3000/telausuario?id=${id}`, {
+        method: 'GET'
+    })   
+    const data = await resposta.json()
+    
     nome.setAttribute('value', data.nome)
     sobrenome.setAttribute('value', data.sobrenome) 
     senha.setAttribute('value', data.senha)
