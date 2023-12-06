@@ -29,6 +29,9 @@ router.get('/', controller.getRaiz)
 router.get('/revolusom', controller.getTelaInicial)
 router.get('/perfil', controller.getTelaPerfil)
 router.get('/escolher', controller.getTelaEscolherGeneros)
+router.get('/generos', controller.getTelaGeneros)
+router.get('/genero', controller.getTelaGenero)
+router.get('/album', controller.getTelaAlbum)
 
 
 // usuario
@@ -52,6 +55,7 @@ router.get('loginartista', controller.getLoginArtista)
 
 router.post('/postalbum', controller.postAlbum)
 router.delete('/deletealbum', controller.deleteAlbum)
+router.get('/musicasalbum', controller.getMusicasAlbum)
 
 
 // musica
@@ -59,6 +63,10 @@ router.delete('/deletealbum', controller.deleteAlbum)
 router.post('/postmusica', controller.postMusica)
 router.delete('/deletemusica', controller.deleteMusica)
 
+
+// genero
+
+router.get('/albunsgenero', controller.getAlbunsGenero)
 
 // playlist
 

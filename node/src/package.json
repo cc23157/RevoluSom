@@ -1,7 +1,6 @@
 {
   "name": "src",
   "version": "1.0.0",
-  "description": "",
   "main": "app.js",
   "scripts": {
     "start": "nodemon."
@@ -21,5 +20,6 @@
   },
   "devDependencies": {
     "prisma": "^5.5.2"
-  }
+  },
+  "description": ""
 }

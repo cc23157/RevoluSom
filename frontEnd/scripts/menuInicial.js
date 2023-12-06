@@ -72,3 +72,7 @@ function Perfil() {
 function Sair() {
     window.location.href = 'http://localhost:3000'
 }
+
+function Generos() {
+    window.location.href = `http://localhost:3000/generos?id=${id}`
+}

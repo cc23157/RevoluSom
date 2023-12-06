@@ -26,3 +26,11 @@ async function getPerfil() {
 function telainicial() {
     window.location.href = `http://localhost:3000/revolusom?id=${id}`
 }
+
+function Sair() {
+    window.location.href = 'http://localhost:3000'
+}
+
+function Generos() {
+    window.location.href = `http://localhost:3000/generos?id=${id}`
+}

@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gênero</title>
+    <script src="scripts/genero.js"></script>
+    <link rel="stylesheet" type="text/css" href="stylesheets/menu.css">
+    <link rel="stylesheet" type="text/css" href="stylesheets/genero.css">
+</head>
+<body onload="getTela()">
+
+    <div class="sidebar" id="sidebar">
+        <ul>
+            <li class="logo">
+                <a href="#">
+                    <span class="icon" ><img src="imagens/logo.png" alt="Icone"></span>
+                    <span class="text"></span>
+                </a>
+            </li>
+            <li>
+                <a onclick="telaInicial()">
+                    <span class="icon"><ion-icon name="home-outline"></ion-icon></span>
+                    <span class="text">Menu</span>
+                </a>
+            </li>
+            <li>
+                <a href="#">
+                    <span class="icon"><ion-icon name="list-outline"></ion-icon></span>
+                    <span class="text">Músicas Recomendadas</span>
+                </a>
+            </li>
+            <li>
+                <a>
+                    <span class="icon"><ion-icon name="musical-notes-outline"></ion-icon></span>
+                    <span class="text">Gêneros</span>
+                </a>
+            </li>
+            <div class="bottom">
+                <li>
+                    <a onclick="Perfil()">
+                        <span class="icon">
+                            <div class="imgBx">
+                                <img id="pfp" style="object-fit: cover; object-position:center"> 
+                            </div>
+                        </span>
+                        <span class="text">Perfil</span>
+                    </a>
+                </li>
+                <li>
+                    <a onclick="Sair()">
+                        <span class="icon"><ion-icon name="log-out-outline"></ion-icon></span>
+                        <span class="text">Sair</span>
+                    </a>
+                </li>
+            </div>
+        </ul>
+    </div>
+
+    <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+</body>
+</html>
+
