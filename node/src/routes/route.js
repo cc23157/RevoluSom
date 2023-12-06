@@ -33,6 +33,8 @@ router.get('/generos', controller.getTelaGeneros)
 router.get('/genero', controller.getTelaGenero)
 router.get('/album', controller.getTelaAlbum)
 router.get('/editarperfil', controller.getTelaEditarUsuario)
+router.get('/criarplaylist', controller.getTelaCriarPlaylist)
+router.get('/playlist', controller.getTelaPlaylist)
 
 
 // usuario
@@ -73,6 +75,7 @@ router.get('/albunsgenero', controller.getAlbunsGenero)
 
 router.post('/postplaylist', controller.postPlaylist)
 router.delete('/deleteplaylist', controller.deletePlaylist)
+router.get('/musicasplaylist', controller.getMusicasPlaylist)
 
 
 // relacionamentos

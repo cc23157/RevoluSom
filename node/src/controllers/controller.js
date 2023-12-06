@@ -9,6 +9,7 @@ const fs = require('fs')
 const { google } = require('googleapis');
 const exp = require('constants');
 const { file } = require('googleapis/build/src/apis/file');
+const { essentialcontacts } = require('googleapis/build/src/apis/essentialcontacts');
 
 const client_id = "83216334534-qr733fr8kiag964nkocu7fmp43ioqq6u.apps.googleusercontent.com"
 const client_secret = "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"
@@ -142,7 +143,13 @@ exports.getTelaEditarUsuario = ('/editarperfil', (req,res) => {
     res.sendFile(filePath + '/editarPerfil.html')
 })
 
+exports.getTelaCriarPlaylist = ('/criarplaylist', (req,res) => {
+    res.sendFile(filePath + '/criarPlaylist.html')
+})
 
+exports.getTelaPlaylist = ('/playlist', (req,res) => {
+    res.sendFile(filePath + '/playlist.html')
+})
 // usuario
 
 exports.postUsuario = ("/postusuario", async(req, res) => {
@@ -247,7 +254,7 @@ exports.getTelaUsuario = ("/telausuario", async(req, res) => {
     try {
         let id = req.query.id
 
-        const get1 = await prisma.$queryRaw`SELECT nome, idCapa FROM Revolusom.Playlist WHERE idUsuario = ${id}`
+        const get1 = await prisma.$queryRaw`SELECT idPlaylist, nome, idCapa FROM Revolusom.Playlist WHERE idUsuario = ${id}`
         let playlists = await get1
 
         const get2 = await prisma.$queryRaw`SELECT TOP 1 preNome, sobrenome, idPfp, senha FROM Revolusom.Usuario WHERE idUsuario = ${id}`
@@ -432,7 +439,7 @@ exports.deleteAlbum = ("/deletealbum", async(req, res) => {
 exports.getMusicasAlbum = ('/musicasalbum', async(req,res) => {
     let idAlbum = req.query.idalbum
 
-    const get1 = await prisma.$queryRaw`SELECT * FROM revolusom.V_musicas_artista WHERE idAlbum = ${idAlbum}`
+    const get1 = await prisma.$queryRaw`SELECT * FROM revolusom.V_musicas WHERE idAlbum = ${idAlbum}`
     let dados = await get1[0]
     let nome = dados.nome
     let idCapa = dados.idCapa
@@ -522,7 +529,7 @@ exports.postPlaylist = ("/postplaylist", async(req, res) => {
         let resultado 
 
 
-        const post = await prisma.$queryRaw`exec revolusom.spCriarPlaylisy ${nome}, ${foto}, ${usuario}, ${resultado} output` 
+        const post = await prisma.$queryRaw`exec revolusom.spCriarPlaylist ${nome}, ${usuario}, ${foto}, ${resultado} output` 
 
         if (resultado != 0) {
             res.send({ message: 'Playlist criada com sucesso!', resultado })
@@ -561,6 +568,26 @@ exports.deletePlaylist = ("/deleteplaylist", async(req, res) => {
             res.send(error)
         }
     }
+})
+
+exports.getMusicasPlaylist = ('/musicasplaylist', async(req,res) => {
+    let idPlaylist = req.query.idplaylist
+
+    const get1 = await prisma.$queryRaw`SELECT nome, idArtista, idArquivo FROM revolusom.Musica WHERE idMusica IN (SELECT idMusica FROM revolusom.PlaylistMusica WHERE idPlaylist = ${idPlaylist})`
+    let dados = await get1
+
+
+    const get2 = await prisma.$queryRaw`SELECT nome, idCapa FROM Revolusom.Playlist WHERE idPlaylist = ${idPlaylist}`
+    let playlist = await get2[0]
+    let nome = playlist.nome
+    let idCapa = playlist.idCapa
+
+    res.send({
+        musicas: dados,
+        nome: nome,
+        idCapa: idCapa
+    })
+
 })
 
 

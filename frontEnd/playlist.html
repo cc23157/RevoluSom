@@ -4,17 +4,15 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Criar playlist</title>
-    <link rel="stylesheet" type="text/css" href="stylesheets/criarPlaylist.css">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="sortcut icon" href="imagens/logo.png" type="image/x-icon">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <script src="scripts/criarPlaylist.js"></script>
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <title>RevoluSom</title>
+    <link rel="stylesheet" type="text/css" href="stylesheets/album.css">
+    <link rel="stylesheet" type="text/css" href="stylesheets/menu.css">
+    <link rel="icon" type="image/x-icon" href="imagens/logo.png">
+    <script src="scripts/playlist.js"></script>
+
 </head>
-
-<body onload="getFoto()">
-
+<body onload="album()">
+    
     <div class="sidebar" id="sidebar">
         <ul>
             <li class="logo">
@@ -64,35 +62,24 @@
 
     <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
     <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
-    
-    <form>
-        <div id="forms">
 
-            <h2>Criar playlist</h2>
+    <div id="alinhar">
 
+
+        <div id="container">
+            <img class="capas" id="capa">
+        </div>
+            
+        <div class="titulo">
+            <h1 id="nome"></h1> 
+            <h3 id="artista"></h3>
+        </div>
+            
             <br>
-            
-            <input class="infos" id="nome" type="text" placeholder="NOME" maxlength="40">
-
             <br>
-            
-            <input type="file" id="arquivo" placeholder="ESCOLHA A FOTO">
-            
             <br>
-            <BR>
-            
-            <input type='button' value="CRIAR" onclick="criar()">
-
-            <!-- <br>
-            
-
-            <input type='button' value="APAGAR CONTA" onclick="deletar()"> -->
-
-        </div>     
-
-
         
-    </form>
+    </div>
 
 </body>
 </html>

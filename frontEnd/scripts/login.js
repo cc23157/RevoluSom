@@ -4,7 +4,6 @@ async function postUsuario() {
     let sobrenome = window.document.getElementById('sobrenome').value 
     let senha = window.document.getElementById('senha').value 
     let image = window.document.getElementById('arquivo').files[0]
-    let artista = window.document.getElementById('artista')
 
     if (image == undefined || image == null) {
         window.alert('Escolha uma foto de perfil.')
@@ -12,57 +11,6 @@ async function postUsuario() {
     else {
         const formData = new FormData();
         formData.append('file', image);
-            
-        if (artista.checked) {
-            try {
-                const foto = await fetch(`http://localhost:3000/postfile?id=${id}&type=${image.type}&parent=2`, {
-                    method: 'POST',
-                    body: formData
-                })
-                const fotores = await foto.json()
-                let idFoto = fotores.id
-        
-                const data = {
-                    email: id,
-                    nome: nome,
-                    sobrenome: sobrenome,
-                    senha: senha,
-                    foto: idFoto
-                }
-        
-                const resposta = await fetch(`http://localhost:3000/postartista`, {
-                    method: 'POST',
-                    headers: {
-                        'Content-Type': 'application/json'
-                    },
-                    body: JSON.stringify(data)
-                })        
-                const res = await resposta.json()
-                
-                if (res.erro == null || res.erro == undefined) {
-                    window.alert(res.message)
-                    window.location.href = `http://localhost:3000/revolusom?id=${id}`
-                }
-                else {
-                    window.alert(res.erro)
-                    window.alert('apagando foto')
-                    try {
-                        let fotoAPagada = await fetch(`http://localhost:3000/deletefile?id=${idFoto}`, {
-                            method: 'DELETE'
-                        })
-                    }
-                    catch (error) {
-                        console.log(error)
-                    }
-                }
-            }
-            catch (error) {
-                console.log(error)
-                window.alert('Erro ao cadastrar: ' + error)
-            }
-        }
-
-        else {
             try {
                 const foto = await fetch(`http://localhost:3000/postfile?id=${id}&type=${image.type}&parent=1`, {
                     method: 'POST',
@@ -110,7 +58,7 @@ async function postUsuario() {
                 window.alert('Erro ao cadastrar: ' + error)
             }
         }
-    }
+    
 }
 
 async function loginUsuario() {

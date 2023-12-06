@@ -50,18 +50,26 @@ async function getTela() {
 
     for (p in playlists) {
         console.log(p)
+        let idPlay = playlists[p].idPlaylist
         let nomePlay = playlists[p].nome
         let idCapa = playlists[p].idCapa
-        criarPlay(nomePlay, idCapa)
+        criarPlay(idPlay, nomePlay, idCapa)
     }
     
 }
 
-function criarPlay(nome, capa) {
+function criarPlaylist() {
+    window.location.href = `http://localhost:3000/criarPlaylist?id=${id}`
+}
+
+function criarPlay(idPlay, nome, capa) {
     let container = window.document.getElementById('cont1')
     let elemento = document.createElement('div')
+    elemento.setAttribute('id', idPlay)
+    elemento.classList.add('album')
+
     let url = `https://drive.google.com/uc?export=view&id=${capa}`
-    elemento.innerHTML = `<h1>${nome}<h1><br><img src=${url}>`
+    elemento.innerHTML = `<h1>${nome}<h1><br><img onclick="Playlist(${idPlay})" src=${url}>`
     container.appendChild(elemento)
 }
 
@@ -75,4 +83,8 @@ function Sair() {
 
 function Generos() {
     window.location.href = `http://localhost:3000/generos?id=${id}`
+}
+
+function Playlist(idPlaylist) {
+    window.location.href = `http://localhost:3000/playlist?idplaylist=${idPlaylist}&id=${id}`
 }
