@@ -187,11 +187,13 @@ body.active
 {
     position: relative;
     height: 100vh;
+    
 }
 
 .sidebar ul li
 {
     list-style: none;
+    cursor: pointer;
 }
 
 .sidebar ul li:hover

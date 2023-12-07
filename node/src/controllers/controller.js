@@ -150,6 +150,12 @@ exports.getTelaCriarPlaylist = ('/criarplaylist', (req,res) => {
 exports.getTelaPlaylist = ('/playlist', (req,res) => {
     res.sendFile(filePath + '/playlist.html')
 })
+
+exports.getTelaMusicas = ('/musica', (req,res) => {
+    res.sendFile(filePath + '/musicas.html')
+})
+
+
 // usuario
 
 exports.postUsuario = ("/postusuario", async(req, res) => {
@@ -509,13 +515,21 @@ exports.deleteMusica = ("/deletemusica", async(req, res) => {
     }
 })
 
+exports.getTodasMusicas = ("/todasmusicas", async(req,res) => {
+    const get = await prisma.$queryRaw`SELECT * FROM Revolusom.V_musica_completa`
+    res.json(get)
+})
+
 
 // genero
 
 exports.getAlbunsGenero = ('/albunsgenero', async(req,res) => {
     let idGenero = req.query.idgenero
+
+    const get2 = await prisma.$queryRaw`SELECT nome FROM revolusom.genero WHERE idGenero = ${idGenero}`
+    let nome = get2[0].nome
     const get = await prisma.$queryRaw`SELECT idAlbum, nome, idCapa FROM revolusom.Album WHERE idAlbum IN (SELECT idAlbum FROM revolusom.AlbumGenero WHERE idGenero = ${idGenero})`;
-    res.json(get)
+    res.json({nome: nome, albuns: get})
 })
 
 
@@ -549,7 +563,7 @@ exports.postPlaylist = ("/postplaylist", async(req, res) => {
 
 exports.deletePlaylist = ("/deleteplaylist", async(req, res) => {
     try {
-        let id = req.body.id
+        let id = req.query.id
         let resultado
 
         const post = await prisma.$queryRaw`exec revolusom.spDeletarPlaylist ${id}, ${resultado} output` 
@@ -752,7 +766,7 @@ exports.adicionarMusicaPlaylist = ("/adicionarmusica", async(req,res) => {
         let idMusica = req.body.idMusica
         let resultado 
 
-        const post = await prisma.$queryRaw`exec revolusom.spUsuarioCurteMusica ${idPlaylist}, ${idMusica}, ${resultado} output` 
+        const post = await prisma.$queryRaw`exec revolusom.spAdicionarMusicaPlaylist ${idPlaylist}, ${idMusica}, ${resultado} output` 
 
         if (resultado != 0) {
             res.send({ message: 'Música adicionada à playlist!', resultado })

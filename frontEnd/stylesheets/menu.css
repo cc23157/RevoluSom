@@ -88,6 +88,7 @@ nav
     background: #ffe9ca;
     overflow: hidden;
     transition: 0.5s;
+    cursor: pointer;
 }
 
 .sidebar:hover

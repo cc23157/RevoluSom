@@ -35,6 +35,7 @@ router.get('/album', controller.getTelaAlbum)
 router.get('/editarperfil', controller.getTelaEditarUsuario)
 router.get('/criarplaylist', controller.getTelaCriarPlaylist)
 router.get('/playlist', controller.getTelaPlaylist)
+router.get('/musicas', controller.getTelaMusicas)
 
 
 // usuario
@@ -76,6 +77,7 @@ router.get('/albunsgenero', controller.getAlbunsGenero)
 router.post('/postplaylist', controller.postPlaylist)
 router.delete('/deleteplaylist', controller.deletePlaylist)
 router.get('/musicasplaylist', controller.getMusicasPlaylist)
+router.get('/todasmusicas', controller.getTodasMusicas)
 
 
 // relacionamentos

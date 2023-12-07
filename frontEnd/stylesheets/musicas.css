@@ -1,0 +1,50 @@
+body {
+    background-color: #fff6e7;
+    color:#1b1e1e;
+    text-align: center;
+}
+
+#musicas {
+    background-color: #ffedd9;
+    color:#1b1e1e;
+    width: 90%;
+    margin: auto;
+    flex-wrap: wrap;
+    display: flex;
+    justify-content: center;
+    border-radius: 8px;
+    max-height: 70vh;
+    overflow-y: auto;
+    padding: 20px;
+}
+
+
+.musicas {
+    width: 300px;
+    padding: 15px;
+    margin:15px;
+    height: 200px;
+    border-radius: 15px;
+    padding-bottom: 40px;
+}
+
+.musicas img {
+    width: 200px;
+    height: 200px;
+    object-fit: cover;
+}
+
+.botao {
+    background-color:#ffe9ca;
+    border-radius: 15px;
+    width: fit-content;
+    padding: 20px;
+    margin: 15px;
+    text-align: center;
+    align-self: center;
+}
+
+#cont2 {
+    display: flex;
+    justify-content: center;
+}

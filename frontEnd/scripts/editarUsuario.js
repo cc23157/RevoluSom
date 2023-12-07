@@ -23,7 +23,7 @@ async function iniciar() {
 
 
 
-async function editar() {
+async function editarUsuario() {
     let nome = window.document.getElementById('nome').value 
     let sobrenome = window.document.getElementById('sobrenome').value 
     let senha = window.document.getElementById('senha').value 

@@ -169,7 +169,7 @@ body.active
 .sidebar
 {
     position: absolute;
-    width: 60px;
+    width: 69px;
     height: 100vh;
     background: #ffe9ca;
     overflow: hidden;
@@ -190,6 +190,7 @@ body.active
 .sidebar ul li
 {
     list-style: none;
+    cursor: pointer;
 }
 
 .sidebar ul li:hover

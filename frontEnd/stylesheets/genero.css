@@ -3,3 +3,28 @@ body {
     color:#1b1e1e;
     text-align: center;
 }
+
+#container {
+    background-color: #ffedd9;
+    color:#1b1e1e;
+    width: 90%;
+    margin: auto;
+    flex-wrap: wrap;
+    display: flex;
+    justify-content: center;
+    border-radius: 8px;
+}
+
+.album {
+    width: 300px;
+    padding: 15px;
+    margin:15px;
+    height: 300px;
+    cursor: pointer;
+}
+
+.album img {
+    width: 200px;
+    height: 200px;
+    object-fit: cover;
+}

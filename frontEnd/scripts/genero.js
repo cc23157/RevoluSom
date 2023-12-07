@@ -8,7 +8,13 @@ async function getTela() {
     const resposta = await fetch(`http://localhost:3000/albunsgenero?idgenero=${idGenero}`, {
         method: 'GET'
     })   
-    const res = await resposta.json()
+    const respost = await resposta.json()
+    console.log(respost)
+
+    let res = respost.albuns
+    let nomeGenero = respost.nome
+    let eNome = window.document.getElementById('nomeGenero')
+    eNome.innerHTML = nomeGenero
     console.log(res)
 
     for (i in res) {
@@ -24,9 +30,12 @@ async function getTela() {
 function criar(idAlbum, nome, capa) {
     let elemento = document.createElement('div')
     elemento.id = idAlbum
+    elemento.classList.add('album')
     let url = `https://drive.google.com/uc?export=view&id=${capa}`
     elemento.innerHTML = `<h1>${nome}<h1><br><img onclick='album(${idAlbum})' src=${url}>`
-    document.body.appendChild(elemento)
+
+    let corpo = window.document.getElementById('container')
+    corpo.appendChild(elemento)
 }
 
 async function getFoto() {

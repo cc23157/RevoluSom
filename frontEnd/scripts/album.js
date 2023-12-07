@@ -36,7 +36,7 @@ async function album() {
         let elemento = window.document.getElementById('alinhar')
         let audio  = window.document.createElement('div')
         audio.classList.add('divMusic')
-        audio.innerHTML = `${nome} <audio controls><source src="https://docs.google.com/uc?export=download&id=${idArquivo}" type="audio/mpeg"></audio>`
+        audio.innerHTML = `${nome} &nbsp &nbsp&nbsp <audio controls><source src="https://docs.google.com/uc?export=download&id=${idArquivo}" type="audio/mpeg"></audio>`
         
         elemento.appendChild(audio)
     }
