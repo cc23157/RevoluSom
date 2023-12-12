@@ -14,7 +14,7 @@ const { essentialcontacts } = require('googleapis/build/src/apis/essentialcontac
 const client_id = "83216334534-qr733fr8kiag964nkocu7fmp43ioqq6u.apps.googleusercontent.com"
 const client_secret = "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"
 const redirect_uri = 'https://developers.google.com/oauthplayground'
-const refresh_token  = '1//04tI7U5FHKJFNCgYIARAAGAQSNwF-L9IrI9wFYOdhJsgiWIylYIOW3tqQtjB9jewkWodUu-PvRyku3I8BENv42KXicSEZ0GO_LkY'
+const refresh_token  = '1//04bFDW2-32gmdCgYIARAAGAQSNwF-L9IrfwecvZvt8_TLM2NG_oT8Y5dGfCc3ICIX3QvH6IOZWZunPAyyVY-hFQ7ySh8p5vmahSM'
 
 const aouth2Client = new google.auth.OAuth2(
     client_id,
@@ -86,10 +86,17 @@ exports.postFile = ("/postfile", async(req,res) => {
 
         let up = await uploadToDrive(id, type, 'uploads/foto.' + shortType, parent)
 
-        let caminho = path.join(__dirname, '..\\uploads\\foto.' + shortType)
-        fs.unlink(caminho, function (err) {
-            if (err) throw err;
-        })
+        try {
+            let caminho = path.join(__dirname, '..\\uploads\\foto.' + shortType)
+            fs.unlink(caminho, function (err) {
+                if (err) throw err;
+            })
+        } catch (error) {
+            let caminho = path.join(__dirname, '..\\uploads\\foto.' + 'jpeg')
+            fs.unlink(caminho, function (err) {
+                if (err) throw err;
+            })
+        }
 
         res.send({id: up})    
     }

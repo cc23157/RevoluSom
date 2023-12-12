@@ -16,22 +16,16 @@
 
     <div class="sidebar" id="sidebar">
         <ul>
-            <li class="logo">
-                <a href="#">
+            <li class="logo" style="cursor: default;">
+                <a>
                     <span class="icon" ><img src="imagens/logo.png" alt="Icone"></span>
                     <span class="text"></span>
                 </a>
             </li>
             <li>
-                <a href="#">
+                <a onclick="telaInicial()">
                     <span class="icon"><ion-icon name="home-outline"></ion-icon></span>
                     <span class="text">Menu</span>
-                </a>
-            </li>
-            <li>
-                <a href="#">
-                    <span class="icon"><ion-icon name="list-outline"></ion-icon></span>
-                    <span class="text">Músicas Recomendadas</span>
                 </a>
             </li>
             <li>
@@ -73,20 +67,25 @@
     
     <h1 id="nomeUsuario"></h1>
     <br><br>
-    <div id="cont2" style="display: flex;">
-
-        <div class="botao" onclick="criarPlaylist()" style="cursor:pointer"> Criar Playlist </div>
-
-    </div>
+    
 
     <br>
     <br>
+
+    <h2>Suas Playlists: </h2>
+    <br><br>
 
     <div id="cont1" class="container">
 
     </div>
 
     <br><br><br>
+
+    <div id="cont2" style="display: flex;">
+
+        <div class="botao" onclick="criarPlaylist()" style="cursor:pointer"> Criar Playlist </div>
+
+    </div>
 
 </body>
 </html>

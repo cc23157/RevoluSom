@@ -42,7 +42,6 @@ async function postUsuario() {
                 }
                 else {
                     window.alert(res.erro)
-                    window.alert('apagando foto')
                     try {
                         let fotoAPagada = await fetch(`http://localhost:3000/deletefile?id=${idFoto}`, {
                             method: 'DELETE'
@@ -73,7 +72,7 @@ async function loginUsuario() {
         console.log(resposta)
         const res = await resposta.json()
         if (res == true) {
-            window.alert('fez login')
+            window.alert('Login efetuado com sucesso!')
             window.location.href = `http://localhost:3000/revolusom?id=${id}`
         }
         else {

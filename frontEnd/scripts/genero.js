@@ -32,7 +32,7 @@ function criar(idAlbum, nome, capa) {
     elemento.id = idAlbum
     elemento.classList.add('album')
     let url = `https://drive.google.com/uc?export=view&id=${capa}`
-    elemento.innerHTML = `<h1>${nome}<h1><br><img onclick='album(${idAlbum})' src=${url}>`
+    elemento.innerHTML = `<h3>${nome}<h3><br><img onclick='album(${idAlbum})' src=${url}>`
 
     let corpo = window.document.getElementById('container')
     corpo.appendChild(elemento)

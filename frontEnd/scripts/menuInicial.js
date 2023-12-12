@@ -56,6 +56,10 @@ async function getTela() {
         criarPlay(idPlay, nomePlay, idCapa)
     }
     
+    if (playlists.length == 0) {
+        let container = window.document.getElementById('cont1')
+        container.innerHTML = 'Você ainda não tem playlists'
+    }
 }
 
 function criarPlaylist() {
@@ -69,7 +73,7 @@ function criarPlay(idPlay, nome, capa) {
     elemento.classList.add('album')
 
     let url = `https://drive.google.com/uc?export=view&id=${capa}`
-    elemento.innerHTML = `<h1>${nome}<h1><br><img onclick="Playlist(${idPlay})" src=${url}>`
+    elemento.innerHTML = `<h3>${nome}<h3><br><img onclick="Playlist(${idPlay})" src=${url}>`
     container.appendChild(elemento)
 }
 
@@ -87,4 +91,8 @@ function Generos() {
 
 function Playlist(idPlaylist) {
     window.location.href = `http://localhost:3000/playlist?idplaylist=${idPlaylist}&id=${id}`
+}
+
+function telainicial() {
+    window.location.href = `http://localhost:3000/revolusom?id=${id}`
 }
